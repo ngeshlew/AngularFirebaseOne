@@ -19,9 +19,9 @@ angular
     'firebase'
   ])
   .value('fbURL', 'https://angularfirebaseone.firebaseIO.com/')
-  .factory('Person', function (fbURL, $firebase) {
-    return $firebase(new Firebase(fbURL)).$asArray();
-  })
+  .factory('Person', function (fbURL, $firebaseArray) {
+    return $firebaseArray(new Firebase(fbURL));
+})
   .config(function ($routeProvider) {
     $routeProvider
       .when('/', {

@@ -31,11 +31,11 @@ angular.module('angularfirebaseApp')
       Person.$remove(id);
     };
   })
-  .controller('EditCtrl', function ($scope, $location, $routeParams, $firebase, fbURL) {
-    var personURL = new Firebase(fbURL + $routeParams.id);
-    $scope.person = $firebase(personURL).$asObject();
+  .controller('EditCtrl', function ($scope, $location, $routeParams, fbURL, $firebaseObject) {
+    var personUrl = new Firebase(fbURL + $routeParams.id);
+    $scope.person = $firebaseObject(personUrl);
     $scope.edit = function() {
-      $scope.person.$save();
-      $location.path('/');
-    };
-  });
+        $scope.person.$save();
+        $location.path('/');
+    }
+});
